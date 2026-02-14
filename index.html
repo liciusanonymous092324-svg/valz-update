@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Spark: Re-Installation</title>
+    <style>
+        :root {
+            --sky-blue: #87CEEB;
+            --orange: #FFA500;
+            --yellow: #FFD700;
+        }
+        body {
+            background-color: var(--sky-blue);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            border-top: 8px solid var(--orange);
+            max-width: 350px;
+            z-index: 10;
+        }
+        h1 { color: var(--orange); margin-bottom: 1rem; }
+        .input-box {
+            padding: 12px;
+            width: 80%;
+            border: 2px solid var(--sky-blue);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            outline: none;
+        }
+        .btn {
+            background: var(--orange);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover { background: #e69500; transform: scale(1.05); }
+        #hidden-content { display: none; }
+        .log-entry {
+            background: #fff9f0;
+            border-left: 4px solid var(--yellow);
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Screen -->
+    <div class="card" id="login-screen">
+        <h1>[ SYSTEM LOCK ]</h1>
+        <p>Enter the secret nickname to decrypt the Valentine's patch:</p>
+        <input type="text" id="passkey" class="input-box" placeholder="Access key...">
+        <br>
+        <button class="btn" onclick="decrypt()">DECRYPT</button>
+    </div>
+
+    <!-- Hidden Content -->
+    <div class="card" id="hidden-content">
+        <h1>V2.0 DEPLOYED 👽</h1>
+        <div class="log-entry">> Initializing memory logs... Success.</div>
+        <div class="log-entry">> Re-checking spark levels... Optimal.</div>
+        <div class="log-entry">> Distance detected: School A to School B. Status: Connection Stable.</div>
+        <p>I know I got bounced once, but I'm pushing this patch because you're worth the effort.</p>
+        <button class="btn" onclick="sendPatch()">SEND PATCH REQUEST</button>
+    </div>
+
+    <script>
+        function decrypt() {
+            const input = document.getElementById('passkey').value.toLowerCase().trim();
+            if(input === 'alien') {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('hidden-content').style.display = 'block';
+                document.body.style.backgroundColor = '#FFD700'; // Flash yellow on success
+                setTimeout(() => document.body.style.backgroundColor = '#87CEEB', 500);
+            } else {
+                alert("ACCESS DENIED. Incorrect credentials.");
+            }
+        }
+
+        function sendPatch() {
+            const msg = encodeURIComponent("System Update Received. The Alien is authorized. 👽");
+            window.location.href = `https://wa.me{msg}`;
+        }
+    </script>
+</body>
+</html>
